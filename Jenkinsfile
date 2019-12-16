@@ -1,8 +1,8 @@
 pipeline
     {
      agent any
-    
- stage('Clone repository')
+        stages{ 
+    stage('Clone repository')
     {
 
  checkout scm
@@ -31,6 +31,7 @@ pipeline
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
+      }
     }
 }
     
