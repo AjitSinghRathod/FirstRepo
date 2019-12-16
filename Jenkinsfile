@@ -1,7 +1,8 @@
-node {
-    def app
-
-    stage('Clone repository')
+pipeline
+    {
+     agent any
+    
+ stage('Clone repository')
     {
 
  checkout scm

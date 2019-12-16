@@ -1,0 +1,9 @@
+pipeline{
+stage('checkout') {
+  steps {
+   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'AjitSingh12', url: 'https://github.com/AjitSingh12/FirstRepo']]])
+  }
+
+  agent any
+}
+}
