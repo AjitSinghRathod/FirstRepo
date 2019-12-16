@@ -12,6 +12,8 @@ node {
 
    steps
      {
+       sh 'gitrun.sh' 
+       sh 'sed -i s/pcc-docker-repo:5043[/]//g /home/sterlite/pcc/EliteCSM/Applications/nvsmx/docker/Dockerfile'
        sh '/home/sterlite/.jenkins/workspace/test/Applications/netvertex/docker/build-nvsmx-image.sh 7.1.0.1'
      }    /* app = docker.build("getintodevops/hellonode")*/
     }
