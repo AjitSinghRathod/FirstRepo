@@ -1,0 +1,40 @@
+from git import Github
+import time
+import os
+import platform
+
+from datetime import datetime as dt
+from datetime import timezone
+
+token = os.environ.get("GITHUBTOKENCICD")
+
+g = Github(token)
+
+repo = g.get_repo("AjitSingh12/FirstRepo") # change to your own repo link
+
+deploy_branch = repo.get_branch("devops")
+
+latest_sha = deploy_branch.commit.sha
+
+commit = repo.get_commit(sha=latest_sha)
+
+committime = commit.commit.author.date
+committime = committime.replace(tzinfo=timezone.utc)
+
+now = dt.now(pytz.timezone('UTC'))
+
+print("Time Now:",now)
+print("Latest commit at:",committime)
+
+timediff = now - committime
+timediffmins = timediff.total_seconds() / 60
+
+if timediffmins < 5:
+ print("New Commit Found! Deploying new commit...")
+ if platform.system() == 'Windows':
+  os.system(".\pullanddeploy.bat")
+ else:
+  os.system(".\pullanddeploy.sh")
+ 
+else:
+ print("No new Commits in last 5 mins")
