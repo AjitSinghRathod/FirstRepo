@@ -14,9 +14,9 @@ deploy_app(){
 ip=`hostname -I | awk '{print $1}'`
 echo $ip
 
-MONGO_URL="mongodb+srv://testajit8:hvkh1TxAbcmVTYAX@cluster0.hogrvzx.mongodb.net/test"
+MONGO_URL=""
 
-JWT_SECRET_KEY="QQKwWjcoGQ1NCsDHa5dP5jSG5L+mDto/z59QZwmFkKRtFeWKvBCPa2L1qGYKvpsN91AbaDRmbmDrLxrrBAs2VHmz6HTlsVDV01UyS6hPzfQAOf9/EtG51I0lVCvEloIKyhGwFl2m0ESLUvFbUUguOXixp+I0U8yAc5riEot1o/xyL17rTdsFqtgGibD5J7mOrys5ayciUxf7MoTLyq4rMDpAiz9NLPDN5yQ=="
+JWT_SECRET_KEY=""
 
 
 cd ResumeBuilderBackend
