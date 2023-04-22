@@ -1,5 +1,8 @@
 #! /bin/bash
 
+mongourl=
+jwtkey=
+
 removedockercontainer(){
 docker stop $( docker ps -a | grep app | awk '{print $1}')
 docker rm $( docker ps -a | grep app | awk '{print $1}')
@@ -14,14 +17,14 @@ deploy_app(){
 ip=`hostname -I | awk '{print $1}'`
 echo $ip
 
-MONGO_URL=""
+MONGO_URL="$mongourl"
 
-JWT_SECRET_KEY=""
+JWT_SECRET_KEY="$jwtkey"
 
 
 cd ResumeBuilderBackend
-echo "JWT_SECRET_KEY=$JWT_SECRET_KEY 
-MONGO_URL=$MONGO_URL" > .env
+echo "JWT_SECRET_KEY=$jwtkey 
+MONGO_URL=$mongourl" > .env
 
 cat .env	
  
